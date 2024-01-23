@@ -1,0 +1,16 @@
+*,
+*::before
+*::after {
+    box-sizing: border-box;
+    /* cursor: url("images/cursor.png"), auto; */
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+@font-face {
+    font-family: "Josefin Sans";
+    src: url("fonts/JosefinSans-Regular.ttf");
+}
