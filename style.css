@@ -1,13 +1,22 @@
 *,
-*::before
+*::before {
+    cursor: url("images/cursor.png") 18 18, auto;
+}
 *::after {
     box-sizing: border-box;
-    /* cursor: url("images/cursor.png"), auto; */
 }
 
 img {
+    cursor: url("images/big\ eye.png") 18 18, auto;
     max-width: 100%;
     display: block;
+}
+
+:root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @font-face {
@@ -19,11 +28,13 @@ img {
 a {
     text-decoration: none;
     color: rgb(194, 241, 255);
+    text-shadow: 4px 4px 4px lightgrey;
 }
 a:hover {
     text-shadow: none;
     background-color: white;
     color: black;
+    cursor: url("images/pointer.png") 18 18, auto;
 }
 
 body {
@@ -34,7 +45,7 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.925), rgba(0, 0, 0, 0.925)), url("https://upload.wikimedia.org/wikipedia/commons/7/7e/Random_static.gif");
     background-size: 100% auto;
     background-blend-mode: hard-light;
-    text-shadow: 2px 2px 2px black;
+    text-shadow: 2px 2px 2px grey;
     text-align: center;
     margin-left: 20%;
     margin-right: 20%;
@@ -46,13 +57,14 @@ body {
 
 #std-txt{
     text-align: left;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
+
 
 @media only screen and (max-width: 600px){
     #std-txt{
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 0%;
+        margin-right: 0%;
     }
 }
