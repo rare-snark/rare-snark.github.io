@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devicewidth, initial-scale=1.0">
+    <title>blog | On Mouse Friction in FPS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="../images/smile-icon.png">
+</head>
+<body>
+    <!-- top bar -->
+    <div class="box" id="tabs">
+        <a id="tab1" href="/">home</a><span> | </span>
+        <a id="tab2" href="/projects">projects</a><span> | </span>
+        <a id="tab3" href="/blog">blog</a><span> | </span>
+        <a id="tab4" href="/about">about</a>
+    </div>
+    <p id="title">Sensitivity Selection is Muscle Group Selection (Rough)</p>
+    <div class="box" id="std-txt">
+        <p>
+            Note: This is all very rough and I will most likely come back to this blog topic and webapp idea later on when I get the chance
+        </p>
+        <p>
+            I used to play with an extremely high mouse sensitivity.
+            I would crank my mouse sensitivity and in-game sensitivity to the highest I possibly could.
+            It was an uncontrollably fast experience and I have fond memories of playing tf2 and my view spinning in circles when a friend so much as bumped the table I played on.
+            Even after time passed and I started to play with more reasonable and controllable sensitivities,
+            the sensitivies I used when I was young were pretty high relative to what I like to use now.
+        </p>
+        <p>
+            We can pretty easily chalk this up to changing tastes as I grew older.
+            Perhaps I stopped caring about speed
+            (though I started to explore higher speed again more recently, getting a skypad and <a href="./post1.html">thinking more on friction</a>)
+            .
+            But I'd like to put forth the idea that my sensitivity changed with me as I grew.
+        </p>
+        <p>
+            When I aim - and I imagine that it's similar for others - I plant my elbow on the table then use my forearm, wrist, and fingers to move the mouse.
+            Moving the mouse with the forearm by pivoting at the elbow plant point and using the other previously mentioned body parts like how you would imagine
+            (
+                I don't really want to describe this too in depth
+                (
+                    there's going to be a mix of fps and non-fps players reading this so I need to keep this understandable to non-fps players while not boring for fps players
+                    (
+                        read: me
+                        (
+                            I don't want to get bored (re)reading my own blog
+                        )
+                    )
+                )
+            )
+        </p>
+        <p>
+            As I grew older, the same big swipe would move the mouse a further distance as my forearm grew.
+            I still wanted a big swipe to turn me around in-game so I adjusted my sensitivity over time to make that true, turning it down in the process.
+        </p>
+        <p>
+            This (I believe) is part of why there's so much variance in sensitivty between different players.
+            People might choose different sensitivities but then end up using/emphasizing the same muscle groups when choosing that sensitivity.
+        </p>
+        <p>
+            Not sure if I introduced the previous concept so well.
+            Some people really identify with the way that they aim in terms of bodypart.
+            You have arm aimers, wrist aimers, and fingertip aimers.
+            But an arm aimer with a longer arm might want a lower sensitivity to get the same "feel" that a different arm aimer with a shorter arm gets.
+        </p>
+        <p>
+            So I decided to get started on making a little webapp calculator to give a better sense of how your in-game sensitivity translates to real life movement.
+        </p>
+        <hr>
+            <input type="text" name="length-input" id="length-input" placeholder="pivot to sensor dist (cm)">
+            <input type="text" name="sens-input" id="sens-input" placeholder="sensitivity (cm/360)">
+            <input type="button" name="go-button" id="go-button" value="calculate" onclick="calculate()">
+            <p id="45-arc">---</p>
+            <p id="80-arc">---</p>
+            <p id="180-ingame">---</p>
+            <p id="90-ingame">---</p>
+            <p id="45-ingame">---</p>
+            <p id="22-25-ingame">---</p>
+            <script src="../scripts/sens_sense_v1.js"></script>
+        <hr>
+        <p>
+            This is pretty rough and my thoughts aren't entirely organized here so expect me to return to this topic in the future and make some more organized blog post(s) and webapp(s).
+            I originally wanted to make an interactable visual component to this webapp but I haven't had the time to do so.
+            Still kind of satisfied by what I made here though.
+        </p>
+        <p>
+            Also just had it explained to me that biomechanically it would be more accurate to describe the motion as arcing since you're realistically moving the
+            pivot point that is your elbow.
+            So definitely going to have to revisit this.
+        </p>
+    </div>
+</body>
+</html>
