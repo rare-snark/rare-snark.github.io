@@ -33,7 +33,7 @@ function getRotation(pivot, length, sens) {return baseSensRotation(pivot, length
 function baseLengthPivot(sens, rotation, x) {return (sens * rotation)/(2 * Math.PI * x)}
 function getLength(sens, rotation, pivot) {return baseLengthPivot(sens, rotation, pivot)}
 function getPivot(sens, rotation, length) {return baseLengthPivot(sens, rotation, length)}
-
+// function baseLengthPivot2(dist)
 function eval() {
     const empty = []
     const filled = []
