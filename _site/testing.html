@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devicewidth, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/smile-icon.png">
+</head>
+<body>
+    <!-- top bar -->
+    <div class="box" id="tabs">
+        <a id="tab1" href="/">home</a><span> | </span>
+        <a id="tab2" href="/projects">projects</a><span> | </span>
+        <a id="tab3" href="/blog">blog</a><span> | </span>
+        <a id="tab4" href="/about">about</a>
+    </div>
+    <p id="title">Test Page</p>
+    <p>testing page</p>
+    <input type="text" name="A" id="A" placeholder="A">
+    <input type="text" name="B" id="B" placeholder="B">
+    <input type="text" name="C" id="C" placeholder="C">
+    <input type="button" name="go-button" id="go-button" value="foo" onclick="foo()">
+    <hr>
+    <input type="text" name="length-input" id="length-input" placeholder="pivot to sensor dist (cm)">
+    <input type="text" name="pivot-input" id="pivot-input" placeholder="irl pivot angle (deg)">
+    <input type="text" name="sens-input" id="sens-input" placeholder="sensitivity (cm/360)">
+    <input type="text" name="rotation-input" id="rotation-input" placeholder="view rotation angle (deg)">
+    <input type="text" name="dist-input" id="dist-input" placeholder="swipe distance (cm)">
+    <input type="button" name="go-button" id="go-button" value="foo" onclick="eval()">
+    <p id="result">---</p>
+    <script src="./scripts/sens_sense_v2.js"></script>
+</body>
+</html>
