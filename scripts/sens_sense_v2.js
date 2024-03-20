@@ -28,18 +28,22 @@ const inputs = [ePivot, eLength, eSens, eRotation, eDist]
 function getDist1(pivot, length) {return pivot * Math.PI * length / 180}
 function getDist2(sens, rotation) {return sens * rotation / 360}
 function baseSensRotation(pivot, length) {return 2 * Math.PI * pivot * length}
-function getSens(pivot, length, rotation) {return baseSensRotation(pivot, length) / rotation}
-function getRotation(pivot, length, sens) {return baseSensRotation(pivot, length) / sens}
+function getSens1(pivot, length, rotation) {return baseSensRotation(pivot, length) / rotation}
+function getRotation1(pivot, length, sens) {return baseSensRotation(pivot, length) / sens}
+function getSens2(dist, rotation) {return 360*dist/rotation}
+function getRotation2(dist, sens) {return 360*dist/sens}
 function baseLengthPivot(sens, rotation, x) {return (sens * rotation)/(2 * Math.PI * x)}
-function getLength(sens, rotation, pivot) {return baseLengthPivot(sens, rotation, pivot)}
-function getPivot(sens, rotation, length) {return baseLengthPivot(sens, rotation, length)}
+function getLength1(sens, rotation, pivot) {return baseLengthPivot(sens, rotation, pivot)}
+function getPivot1(sens, rotation, length) {return baseLengthPivot(sens, rotation, length)}
+function getLength2(dist, pivot) {return (180*dist)/(Math.PI*pivot)}
+function getPivot2(dist, length) {return (180*dist)/(Math.PI*length)}
 // function baseLengthPivot2(dist)
 function eval() {
     const empty = []
     const filled = []
     for (let i = 0; i < inputs.length; i++) {
         ele = inputs[i]
-        console.log(`innerhtml: ${ele.innerHTML} | value ${ele.value}`);
+        console.log(`innerhtml: ${ele.name} | value: ${ele.value}`);
         if (isNaN(ele.value)) {
             res.innerHTML = `NaN value in '${ele.placeholder}'`
             return
@@ -47,7 +51,6 @@ function eval() {
         if (ele.value == "") empty.push(ele)
         else filled.push(ele)
     }
-    // console.log(`known: ${filled} | unknown: ${empty}`);
     if (empty.length > 2) {
         res.innerHTML = "too many empty fields"
         return
@@ -62,29 +65,42 @@ function eval() {
             return
         }
         while (empty.length != 0){
-            ele = empty.shift()
-            if (ele === eLength){ele.value = getLength(eSens.value, eRotation.value, ePivot.value)}
-            else if (ele === eDist){ele.value = getDist1(ePivot.value, eLength.value)
+            ele = empty[0]
+            console.log(`adjusting: innerhtml: ${ele.name} | value: ${ele.value}`);
+            if (ele === eLength){
+                console.log("detected eLength");
+                ele.value = getLength1(eSens.value, eRotation.value, ePivot.value)
+                if (ele.value == 0) ele.value = getLength2(eDist.value, ePivot.value)
+            }
+            else if (ele === eDist){
+                console.log("detected eDist");
+                ele.value = getDist1(ePivot.value, eLength.value)
+                if (ele.value == 0) ele.value = getDist2(eSens.value, eRotation.value)
             }
             else if (ele === ePivot){
-                ele.value = getPivot(eSens.value, eRotation.value, eLength.value)
+                console.log("detected ePivot");
+                ele.value = getPivot1(eSens.value, eRotation.value, eLength.value)
+                if (ele.value == 0) ele.value = getPivot2(eDist.value, eLength.value)
             }
             else if (ele === eSens){
-                ele.value = getSens(ePivot.value, eLength.value, eRotation.value)
+                console.log("detected eSens");
+                ele.value = getSens1(ePivot.value, eLength.value, eRotation.value)
+                if (ele.value == 0) ele.value = getSens2(eDist.value, eRotation.value)
             }
             else if (ele === eRotation){
-                ele.value = getRotation(ePivot.value, eLength.value, eSens.value)
+                console.log("detected eRotation");
+                ele.value = getRotation1(ePivot.value, eLength.value, eSens.value)
+                if (ele.value == 0) ele.value = getRotation2(eDist.value, eSens.value)
             }
-            console.log(ele.value)
-            if (ele.value == 0) empty.push(ele)
+            console.log(`adjusted: innerhtml: ${ele.name} | value: ${ele.value}`);
+            if (ele.value == 0) {
+                empty.push(empty[0])
+                empty.shift()
+            }
+            else {
+                empty.shift()
+            }
         }
+        res.innerHTML = "finished calculating"
     }
-    // else if (empty.length == 1) {
-    //     ele = empty.pop()
-    //     if (ele === eLength){ele.value = getLength(eSens.value, eRotation.value, ePivot.value)}
-    //     else if (ele === eDist){ele.value = getDist1(ePivot.value, eLength.value)}
-    //     else if (ele === ePivot){ele.value = getPivot(eSens.value, eRotation.value, eLength.value)}
-    //     else if (ele === eSens){ele.value = getSens(ePivot.value, eLength.value, eRotation.value)}
-    //     else if (ele === eRotation){ele.value = getRotation(ePivot.value, eLength.value, eSens.value)}
-    // }
 }
